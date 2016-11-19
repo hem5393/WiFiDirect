@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">WiFi Direct</string>
+    <string name="discover_peers_button">Discover Peers</string>
+    <string name="enable_p2p_button">Wifi Direct On/Off</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="start_client">Start Client</string>
+    <string name="no_devices_found">No devices found.</string>
+    <string name="peers_found">Peers Found</string>
+    <string name="textview">TextView</string>
+    <string name="this_device">This Device</string>
+    <string name="textview1">TextView</string>
+    <string name="group_owner_text">Group owner?</string>
+    <string name="yes">Yes</string>
+    <string name="select_dir">Select Directory</string>
+    <string name="title_activity_file_browser">WiFi Direct File Transfer</string>
+
+    <string name="file_browser_title">File Browser</string>
+
+    <string name="no">No</string>
+    <string name="client_text">This is a Client. Click on gallary.</string>
+    <string name="empty"></string>
+    <string name="device_address">Device Address</string>
+    <string name="device_info">Device Info</string>
+    <string name="group_owner">Group Owner</string>
+    <string name="group_ip">Group ip</string>
+    <string name="status_text">Status</string>
+    <string name="peer_name">Peer Name</string>
+    <string name="peer_details">Peer Details</string>
+    <string name="device_name">Device Name</string>
+    <string name="device_status">Device Status</string>
+
 </resources>
