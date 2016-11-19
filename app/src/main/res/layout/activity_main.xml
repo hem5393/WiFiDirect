@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.hem.wifi_direct.ActivityList"
+    tools:context=".MainActivity"
     android:weightSum="1"
     android:orientation="vertical"
     style="@style/AppTheme"
@@ -18,8 +18,8 @@
         android:layout_height="match_parent">
 
         <fragment
-            class="com.android.hem.wifi_direct.PeerListFragment"
-            android:name="com.android.hem.wifi_direct.PeerListFragment"
+            class="com.example.me.wifidirect.PeerListFragment"
+            android:name="com.example.me.wifidirect.PeerListFragment"
             android:id="@+id/frag_list"
             tools:layout="@layout/row_devices"
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_weight="1" />
 
         <fragment
-            class="com.android.hem.wifi_direct.PeerDetailsFragment"
+            class="com.example.me.wifidirect.PeerDetailsFragment"
             android:name="android.support.v4.app.ListFragment"
             android:id="@+id/frag_details"
             tools:layout="@layout/device_details"
