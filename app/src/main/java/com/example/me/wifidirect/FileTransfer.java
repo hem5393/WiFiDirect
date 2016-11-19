@@ -39,18 +39,18 @@ public class FileTransfer extends IntentService {
         Context context = getApplicationContext();
         if (intent.getAction().equals(ACTION_SEND_FILE)){
             String fileUri = intent.getExtras().getString(EXTRA_FILE_PATH);
-            Log.d(ActivityList.TAG, "hello"  + fileUri);
+            Log.d(MainActivity.TAG, "hello"  + fileUri);
             String host = intent.getExtras().getString(EXTRA_GROUP_OWNER_ADDRESS);
-            Log.d(ActivityList.TAG, "hello"  + host);
+            Log.d(MainActivity.TAG, "hello"  + host);
             Socket socket = new Socket();
             int port = intent.getExtras().getInt(EXTRA_GROUP_OWNER_PORT);
-            Log.d(ActivityList.TAG, "hello"  + port);
+            Log.d(MainActivity.TAG, "hello"  + port);
 
             try {
-                Log.d(ActivityList.TAG,"Opening client socket- ");
+                Log.d(MainActivity.TAG,"Opening client socket- ");
                 socket.bind(null);
                 socket.connect((new InetSocketAddress(host,port)),SOCKET_TIMEOUT);
-                Log.d(ActivityList.TAG, "Client socket- " + socket.isConnected());
+                Log.d(MainActivity.TAG, "Client socket- " + socket.isConnected());
                 OutputStream outputStream = socket.getOutputStream();
                 InputStream inputStream = null;
                 ContentResolver resolver = context.getContentResolver();
@@ -58,13 +58,13 @@ public class FileTransfer extends IntentService {
                     inputStream = resolver.openInputStream(Uri.parse(fileUri));
                 }
                 catch (FileNotFoundException e){
-                    Log.d(ActivityList.TAG, e.toString());
+                    Log.d(MainActivity.TAG, e.toString());
                 }
                 PeerDetailsFragment.copyFile(inputStream,outputStream);
-                Log.d(ActivityList.TAG, "Client: Data Written");
+                Log.d(MainActivity.TAG, "Client: Data Written");
 
             } catch (IOException e) {
-                Log.d(ActivityList.TAG, e.toString());
+                Log.d(MainActivity.TAG, e.toString());
             }
             finally {
                 if (socket != null){

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:title="@string/enable_p2p_button"
+        android:id="@+id/wifi_direct_enable"
+        android:visible="true"
+         />
+    <item
+        android:id="@+id/wifi_direct_discover_peers"
+        android:title="@string/discover_peers_button"
+        android:visible="true"
+        android:enabled="true"
+         />
+
+</menu>
