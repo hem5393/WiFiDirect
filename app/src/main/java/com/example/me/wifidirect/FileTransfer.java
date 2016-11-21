@@ -23,7 +23,7 @@ public class FileTransfer extends IntentService {
     public static final String EXTRA_FILE_PATH = "file_uri";
     public static final String EXTRA_GROUP_OWNER_ADDRESS = "go_host" ;
     public static final String EXTRA_GROUP_OWNER_PORT = "go_port";
-    private static final int SOCKET_TIMEOUT = 500;
+    private static final int SOCKET_TIMEOUT = 5000000;
 
 
     public FileTransfer(String name){

@@ -81,9 +81,9 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
             @Override
             public void onClick(View v) {
                 //Log.d(MainActivity.TAG,"File Selected");
-                //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                Intent intent = new Intent(getActivity(),FileBrowser.class);
-                //intent.setType("image/*");
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                //Intent intent = new Intent(getActivity(),FileBrowser.class);
+                intent.setType("image/*");
                 startActivityForResult(intent, CHOOSE_FILE_RESULT_CODE);
                 //Log.d(MainActivity.TAG,"File Selected");
             }
@@ -98,7 +98,7 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
         if (resultCode == Activity.RESULT_OK){
             Log.d(MainActivity.TAG,"File Selected");
         }
-        File targetDir = (File) data.getExtras().get("file");
+        /*File targetDir = (File) data.getExtras().get("file");
         if (targetDir.exists()) {
             if (targetDir.canRead()) {
                 Log.d(MainActivity.TAG, "its file");
@@ -107,9 +107,14 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
         if (targetDir.isFile()){
             Log.d(MainActivity.TAG, "its file .target");
         }
-        //Uri uri = data.getData();
+        */
+
+
+        Uri uri = data.getData();
         String selectedFilePath;
-        selectedFilePath = targetDir.getPath();
+        selectedFilePath = uri.toString();
+
+        selectedFilePath = uri.toString();
         Log.d(MainActivity.TAG,selectedFilePath);
         Log.d(MainActivity.TAG,"File Selected");
         TextView statusText = (TextView) contentView.findViewById(R.id.status_text);
@@ -117,7 +122,7 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
         Log.d(MainActivity.TAG,"Intent ...." + selectedFilePath);
         Intent serviceIntent = new Intent(getActivity(), FileTransfer.class);
         serviceIntent.setAction(FileTransfer.ACTION_SEND_FILE);
-        serviceIntent.putExtra(FileTransfer.EXTRA_FILE_PATH, selectedFilePath);
+        serviceIntent.putExtra(FileTransfer.EXTRA_FILE_PATH, uri.toString());
         serviceIntent.putExtra(FileTransfer.EXTRA_GROUP_OWNER_ADDRESS,info.groupOwnerAddress.getHostAddress());
         serviceIntent.putExtra(FileTransfer.EXTRA_GROUP_OWNER_PORT, 8988);
         getActivity().startService(serviceIntent);
@@ -217,7 +222,7 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.parse("file://" + result),"image/*");
-                //context.startActivity(intent);
+                context.startActivity(intent);
             }
         }
         @Override
@@ -227,12 +232,13 @@ public class PeerDetailsFragment extends Fragment implements ConnectionInfoListe
     }
 
     public static boolean copyFile(InputStream inputStream, OutputStream outputStream){
-        byte buffer [] = new byte[4096];
-        int length;
+
         long startTime = System.currentTimeMillis();
 
         try {
-            if ((length = inputStream.read(buffer)) != -1){
+            byte buffer [] = new byte[inputStream.available()];
+            int length;
+            while ((length = inputStream.read(buffer)) != -1){
                 outputStream.write(buffer, 0, length);
             }
             outputStream.close();

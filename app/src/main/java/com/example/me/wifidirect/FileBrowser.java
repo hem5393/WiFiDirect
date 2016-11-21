@@ -35,7 +35,7 @@ public class FileBrowser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_browser);
 
-        root = "/mnt/sdcard/";
+        root = "/";
         currentPath = root;
 
         targets = null;
